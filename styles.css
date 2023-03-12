@@ -1,0 +1,103 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main {
+    background-color: aqua;
+    min-height: 100vh;
+    display: flex;
+}
+
+nav {
+    background-color: #171717;
+    flex-basis: 20%;
+    color: white;
+}
+
+.body {
+    background-color: yellowgreen;
+    flex-basis: 80%;
+}
+
+nav ul {
+    list-style: none;
+    padding-top: 1rem;
+    padding-left: 0;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+nav ul li a:hover {
+    background-color:  rgb(48, 48, 48);
+    color: white;
+}
+
+.logo {
+    padding: 1.5rem;
+}
+
+.logo img {
+    width: 8.5rem;
+}
+
+header {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header input {
+    max-width: 20rem;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+}
+
+.avatar img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.avatar div {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar div em {
+    font-style: normal;
+}
+
+.avatar div span {
+    font-size: .8rem;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+}
+
+.active_menu_item {
+    background-color:  rgb(48, 48, 48);
+}
+
+.main_body {
+    background-color: #EFF1F7;
+    min-height: calc(100% - 80px);
+    padding: 20px;
+}
