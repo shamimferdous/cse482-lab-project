@@ -15,6 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"
+        integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -25,13 +28,13 @@
             </div>
             <ul>
                 <li>
-                    <a href="/">
+                    <a href="/" class="active_menu_item">
                         <i class="fa-solid fa-house"></i>
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="/manage-products.html" class="active_menu_item">
+                    <a href="/manage-products.html">
                         <i class="fa-solid fa-house"></i>
                         Manage Products
                     </a>
@@ -71,166 +74,71 @@
             </header>
 
             <section class="main_body">
-                <div class="page_header">
-                    <h1>Product Management</h1>
-                    <div>
-                        <input type="text" class="form-control" placeholder="Search products by SKU">
-                        <a href="/create-product.html">
-                            <button class="btn btn-success">Create New Product</button>
-                        </a>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="home_data">
+                            <i class="fa-solid fa-box-open"></i>
+                            <div class="d-flex flex-column">
+                                <em>482</em>
+                                <span>Products</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="home_data">
+                            <i class="fa-solid fa-receipt" style="color: #EA5D5E"></i>
+                            <div class="d-flex flex-column">
+                                <em>2549</em>
+                                <span>Invoices</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="home_data">
+                            <i class="fa-solid fa-user-tie" style="color: #FCAD74"></i>
+                            <div class="d-flex flex-column">
+                                <em>13</em>
+                                <span>Users</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <br>
+                <div>
+                    <div class="card">
+                        <canvas id="myChart"></canvas>
+                    </div>
 
-                <div class="card">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">SKU</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Stock</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PK-25432</th>
-                                <td>Teer Fortified Soyabean Oil 2 Ltr</td>
-                                <td>
-                                    <img style="width: 70px"
-                                        src="https://nexa-static.s3.ap-south-1.amazonaws.com/nexa_teersoybeanoil2kg-Fxmi1.webp"
-                                        alt="">
-                                </td>
-                                <td>৳ 334</td>
-                                <td>
-                                    <span class="badge bg-primary">58</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
 
             </section>
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Total Sales ৳',
+                    data: [302004, 194445, 154235, 545455, 225423, 372378],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
