@@ -12,11 +12,15 @@ nav {
     background-color: #171717;
     flex-basis: 20%;
     color: white;
+    position: fixed;
+    width: 20vw;
+    height: 100vh;
 }
 
 .body {
     background-color: yellowgreen;
     flex-basis: 80%;
+    margin-left: 20vw;
 }
 
 nav ul {
@@ -37,6 +41,7 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color:  rgb(48, 48, 48);
+    /* background-color: #E81D1B; */
     color: white;
 }
 
@@ -93,7 +98,12 @@ header input {
 }
 
 .active_menu_item {
-    background-color:  rgb(48, 48, 48);
+    /* background-color:  rgb(48, 48, 48); */
+    background-color: #E81D1B;
+}
+.active_menu_item:hover {
+    /* background-color:  rgb(48, 48, 48); */
+    background-color: #E81D1B !important;
 }
 
 .main_body {
