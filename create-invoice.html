@@ -19,55 +19,10 @@
 
 <body>
     <div class="main">
-        <nav>
-            <div class="logo">
-                <img src="https://companieslogo.com/img/orig/LSPD_BIG.D-86e1e481.png?t=1659774494" alt="">
-            </div>
-            <ul>
-                <li>
-                    <a href="/">
-                        <i class="fa-solid fa-house"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="/manage-products.html">
-                        <i class="fa-solid fa-carrot"></i>
-                        Manage Products
-                    </a>
-                </li>
-                <li>
-                    <a href="/manage-invoices.html" class="active_menu_item">
-                        <i class="fa-solid fa-receipt"></i>
-                        Manage Invoices</a>
-                </li>
-                <li>
-                    <a href="/manage-users.html">
-                        <i class="fa-solid fa-users"></i>
-                        Manage Users
-                    </a>
-                </li>
-            </ul>
+        <nav id="header">
         </nav>
         <div class="body">
-            <header>
-                <input class="form-control" type="text" placeholder="Search invoice by ID">
-                <div class="header__right">
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-regular fa-bell"></i>
-                    </button>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-cash-register"></i>
-                    </button>
-                    <div class="avatar">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                            alt="">
-                        <div>
-                            <em>John Doe</em>
-                            <span>Cashier</span>
-                        </div>
-                    </div>
-                </div>
+            <header id="topbar">
             </header>
 
             <section class="main_body">
@@ -81,19 +36,21 @@
                 </div>
 
                 <div class="card">
-                    <form>
+                    <form id="invoice-form" name="invoice-form" onsubmit="return handleInvoiceCreate(event)">
                         <div class="row gy-2">
                             <div class="col-6">
                                 <label class="form-label">Customer Name</label>
-                                <input class="form-control" type="text" placeholder="John Doe">
+                                <input name="customer_name" class="form-control" type="text" placeholder="John Doe">
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Customer Number</label>
-                                <input class="form-control" value="+880" type="text" placeholder="John Doe">
+                                <input name="customer_number" class="form-control" value="+880" type="text"
+                                    placeholder="John Doe">
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Invoice ID</label>
-                                <input readonly value="IV-21498" class="form-control" type="text">
+                                <input id="invoice-id" name="id" readonly value="IV-21498" class="form-control"
+                                    type="text">
                             </div>
                             <div class="col-2">
                                 <label class="form-label">Add Product</label>
@@ -107,18 +64,13 @@
                             <div class="col-6">
 
                                 <label class="form-label" style="color: white">x</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="">Teer Soyabean Oil 2 Litre</option>
-                                    <option value="">Teer Soyabean Oil 3 Litre</option>
-                                    <option value="">Teer Soyabean Oil 4 Litre</option>
-                                    <option value="">Teer Soyabean Oil 5 Litre</option>
-                                    <option value="">Teer Soyabean Oil 6 Litre</option>
-                                    <option value="">Teer Soyabean Oil 7 Litre</option>
+                                <select name="" id="prod-list" class="form-control">
                                 </select>
                             </div>
                             <div class="col-4 d-flex flex-column">
                                 <label class="form-label" style="color: white">x</label>
-                                <button type="button" class="btn btn-success">Add Product</button>
+                                <button onclick="handleAddProductToCart()" type="button" class="btn btn-success">Add
+                                    Product</button>
                             </div>
                             <div class="col-12">
                                 <table class="table table-success">
@@ -128,71 +80,27 @@
                                         <th>Unit Price</th>
                                         <th>Total Price</th>
                                     </tr>
-                                    <tr>
-                                        <td>Teer Soyabean Oil 2 Litre</td>
-                                        <td>
-                                            <input type="number" value="2" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="342" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="684" class="form-control">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teer Soyabean Oil 3 Litre</td>
-                                        <td>
-                                            <input type="number" value="2" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="342" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="684" class="form-control">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teer Soyabean Oil 4 Litre</td>
-                                        <td>
-                                            <input type="number" value="1" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="342" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="684" class="form-control">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teer Soyabean Oil 5 Litre</td>
-                                        <td>
-                                            <input type="number" value="3" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="342" class="form-control">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="684" class="form-control">
-                                        </td>
-                                    </tr>
+                                    <tbody id="cart">
+                                    </tbody>
                                 </table>
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Total Price</label>
-                                <input required name="price" type="number" class="form-control" value="2345">
+                                <input id="cart-total" required name="total_price" type="number" class="form-control">
                             </div>
                             <div class="col-6">
                                 <label class="form-label">VAT</label>
-                                <input required name="price" type="number" class="form-control" value="547">
+                                <input id="cart-vat" required name="vat" type="number" class="form-control">
                             </div>
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <label class="form-label">Discount</label>
                                 <input required name="stock" type="number" class="form-control" value="0">
-                            </div>
+                            </div> -->
                             <div class="col-6">
                                 <label class="form-label">Payment Method</label>
-                                <input required name="card"  type="tesxt" class
+                                <select name="pm" id="" class="form-control">
+                                    <option value="cash">Cash</option>
+                                    <option value="card">Card</option>
                                 </select>
                             </div>
 
@@ -207,6 +115,58 @@
 
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+        integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="/invoice.js"></script>
+    <script>
+        // get the tbody element where products will be displayed
+        const productsTable = document.getElementById('products-table');
+
+        // make an AJAX request using Axios
+        axios.get('http://localhost/cse-482-server/api/get-all-products.php')
+            .then(function (response) {
+                products = response.data.alldata;
+                let options = [];
+                products.map(prod => {
+                    options.push({
+                        value: prod.id,
+                        label: prod.name
+                    })
+                })
+
+                // Get a reference to the select element
+                const select = document.getElementById('prod-list');
+
+                // Loop through the options array and create an option element for each item
+                for (let i = 0; i < options.length; i++) {
+                    const option = options[i];
+
+                    // Create a new option element
+                    const optionElement = document.createElement('option');
+
+                    // Set the value and label of the option element
+                    optionElement.value = option.value;
+                    optionElement.text = option.label;
+
+                    // Add the option element to the select element
+                    select.appendChild(optionElement);
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+                // handle the error
+            });
+    </script>
+
+    <script>
+        let invoice_id = 'LP' + Math.floor(100000000 + Math.random() * 900000000);;
+        document.getElementById('invoice-id').value = invoice_id;
+    </script>
+
 </body>
 
 </html>
