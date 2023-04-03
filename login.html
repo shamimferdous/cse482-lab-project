@@ -23,19 +23,17 @@
             <img src="https://theme.zdassets.com/theme_assets/821742/5377a34d7c96c7e0b0fbc3617e59f48ad916e272.png"
                 alt="">
             <em>Welcome back to LightSpeed POS!</em>
-            <form action="" class="row gy-2">
+            <form id="login-form" onsubmit="return loginHandler(event)" class="row gy-2">
                 <div class="col-12">
                     <label for="">Username</label>
-                    <input required type="text" name="username" id="" class="form-control">
+                    <input required type="text" name="username" class="form-control">
                 </div>
                 <div class="col-12">
                     <label for="">Password</label>
-                    <input required type="text" name="username" id="" class="form-control">
+                    <input required type="password" name="password" class="form-control">
                 </div>
                 <div class="col-12" style="margin-top: 20px;">
-                    <a href="/">
-                        <button type="button" class="btn btn-danger w-100">Log In</button>
-                    </a>
+                    <button type="submit" class="btn btn-danger w-100">Log In</button>
                 </div>
             </form>
             <div class="d-flex gap-2 mt-3 reset-prompt">
@@ -44,6 +42,13 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+        integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/scripts.js"></script>
 </body>
 
 </html>

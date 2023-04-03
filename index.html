@@ -22,55 +22,10 @@
 
 <body>
     <div class="main">
-        <nav>
-            <div class="logo">
-                <img src="https://companieslogo.com/img/orig/LSPD_BIG.D-86e1e481.png?t=1659774494" alt="">
-            </div>
-            <ul>
-                <li>
-                    <a href="/" class="active_menu_item">
-                        <i class="fa-solid fa-house"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="/manage-products.html">
-                        <i class="fa-solid fa-carrot"></i>
-                        Manage Products
-                    </a>
-                </li>
-                <li>
-                    <a href="/manage-invoices.html">
-                        <i class="fa-solid fa-receipt"></i>
-                        Manage Invoices</a>
-                </li>
-                <li>
-                    <a href="/manage-users.html">
-                        <i class="fa-solid fa-users"></i>
-                        Manage Users
-                    </a>
-                </li>
-            </ul>
+        <nav id="header">
         </nav>
         <div class="body">
-            <header>
-                <input class="form-control" type="text" placeholder="Search invoice by ID">
-                <div class="header__right">
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-regular fa-bell"></i>
-                    </button>
-                    <button type="button" class="btn btn-light">
-                        <i class="fa-solid fa-cash-register"></i>
-                    </button>
-                    <div class="avatar">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                            alt="">
-                        <div>
-                            <em>John Doe</em>
-                            <span>Cashier</span>
-                        </div>
-                    </div>
-                </div>
+            <header id="topbar">
             </header>
 
             <section class="main_body">
@@ -80,7 +35,7 @@
                         <div class="home_data">
                             <i class="fa-solid fa-box-open"></i>
                             <div class="d-flex flex-column">
-                                <em>482</em>
+                                <em id="prod-c">482</em>
                                 <span>Products</span>
                             </div>
                         </div>
@@ -89,7 +44,7 @@
                         <div class="home_data">
                             <i class="fa-solid fa-receipt" style="color: #EA5D5E"></i>
                             <div class="d-flex flex-column">
-                                <em>2549</em>
+                                <em id="invoice-c">2549</em>
                                 <span>Invoices</span>
                             </div>
                         </div>
@@ -98,7 +53,7 @@
                         <div class="home_data">
                             <i class="fa-solid fa-user-tie" style="color: #FCAD74"></i>
                             <div class="d-flex flex-column">
-                                <em>13</em>
+                                <em id="user-c">13</em>
                                 <span>Users</span>
                             </div>
                         </div>
@@ -137,6 +92,19 @@
                     }
                 }
             }
+        });
+    </script>
+    <script src="/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+        integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        axios.get('http://localhost/cse-482-server/api/get-stat.php').then(response => {
+            console.log(response.data);
+            document.getElementById('prod-c').innerText = response.data.products;
+            document.getElementById('invoice-c').innerText = response.data.invoices;
+            document.getElementById('user-c').innerText = response.data.users;
         });
     </script>
 </body>
