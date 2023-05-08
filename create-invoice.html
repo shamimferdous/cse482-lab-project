@@ -55,10 +55,11 @@
                             <div class="col-2">
                                 <label class="form-label">Add Product</label>
                                 <div class="input-group mb-3">
-                                    <input placeholder="SKU" type="text" class="form-control" id="inputGroupFile03"
+                                    <input placeholder="SKU" type="text" class="form-control" id="skuAdd"
                                         aria-describedby="inputGroupFileAddon03" aria-label="Upload">
                                     <button class="btn btn-outline-secondary" type="button"
-                                        id="inputGroupFileAddon03"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        id="inputGroupFileAddon03"><i class="fa-solid fa-magnifying-glass"
+                                            onclick="return addProdUsingSKU()"></i></button>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -100,7 +101,7 @@
                                 <label class="form-label">Payment Method</label>
                                 <select name="pm" id="" class="form-control">
                                     <option value="cash">Cash</option>
-                                    <option value="card">Card</option>
+                                    <option value="online">Online</option>
                                 </select>
                             </div>
 
@@ -167,7 +168,9 @@
         let invoice_id = 'LP' + Math.floor(100000000 + Math.random() * 900000000);;
         document.getElementById('invoice-id').value = invoice_id;
     </script>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
