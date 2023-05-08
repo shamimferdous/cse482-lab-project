@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="invoice">
+    <div class="invoice" id="invoice">
         <div class="invoice-head">
             <img src="https://companieslogo.com/img/orig/LSPD_BIG-b750763c.png?t=1659774494" alt="">
             <span>Shop-19, Block-C, Jamuna Future Park</span>
@@ -91,6 +91,8 @@
       `;
                 // add the row to the tbody element
                 productsTable.appendChild(row);
+
+                printDiv('invoice');
             })
             // <tr>
             //     <td>jsaddjklsdskld</td>
@@ -98,6 +100,19 @@
             //     <td style="text-align: right;">2323</td>
             // </tr>
         })
+
+
+
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
 
     </script>
 </body>

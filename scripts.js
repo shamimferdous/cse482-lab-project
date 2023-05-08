@@ -69,6 +69,10 @@ const loadLayout = () => {
             if (path.includes('product')) {
                 document.getElementById('prod-sb').className = 'active_menu_item';
             }
+
+            if (path.includes('index')) {
+                document.getElementById('home-sb').className = 'active_menu_item';
+            }
         }
     };
 
@@ -84,7 +88,7 @@ const showMessage = (message) => {
     }).showToast();
 }
 
-const handleCreateProduct = e => {
+const handleCreateProduct = (e) => {
     e.preventDefault();
 
     const form = document.getElementById('cp-form');
@@ -102,18 +106,17 @@ const handleCreateProduct = e => {
         }
     })
         .then(function (response) {
-            console.log(response.data);
-            window.location.replace('/manage-products.html')
+            // console.log(response.data);
+            window.location.replace('/manage-products.html');
             // do something with the response
         })
         .catch(function (error) {
             console.log(error);
             // handle the error
         });
-
 }
 
-const handleCreateUser = e => {
+const handleCreateUser = (e) => {
     e.preventDefault();
 
     let user = JSON.parse(localStorage.getItem('user'));
@@ -182,7 +185,7 @@ const loginHandler = e => {
         }
     })
         .then(function (response) {
-            console.log(response.data);
+            // console.log(response.data);
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data));
             window.location.replace('/manage-products.html')

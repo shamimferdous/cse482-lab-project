@@ -107,7 +107,7 @@ const handleInvoiceCreate = e => {
     })
         .then(function (response) {
             console.log(response.data);
-
+            window.location.replace('/manage-invoices.html');
             // do something with the response
         })
         .catch(function (error) {
