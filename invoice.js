@@ -86,6 +86,53 @@ const handleAddProductToCart = () => {
     renderCart();
 }
 
+const handleAddProductToCartV2 = (prod_id) => {
+
+    // console.log(products);
+    products.forEach(prod => {
+        if (prod_id == prod.id) {
+            console.log(prod);
+            let item = {
+                name: prod.name,
+                id: prod.id,
+                qty: 1,
+                unit_price: prod.price,
+                total_price: prod.price,
+                vat: prod.vat
+            }
+
+            cart.push(item);
+        }
+    })
+
+    console.log(cart);
+    renderCart();
+}
+
+
+const addProdUsingSKU = () => {
+    let id = document.getElementById('skuAdd').value;
+    if (!id) {
+        Toastify({
+            text: 'Please enter SKU',
+            duration: 3000,
+            position: 'center'
+        }).showToast();
+        return;
+    }
+
+    axios.get(`http://localhost/cse-482-server/api/get-product.php?id=${id}`).then(response => {
+        console.log(response.data.productInfo[0].id);
+        handleAddProductToCartV2(response.data.productInfo[0].id);
+    }).catch(err => {
+        Toastify({
+            text: 'Invalid SKU',
+            duration: 3000,
+            position: 'center'
+        }).showToast();
+    })
+}
+
 
 const handleInvoiceCreate = e => {
     e.preventDefault();
@@ -108,6 +155,11 @@ const handleInvoiceCreate = e => {
         .then(function (response) {
             console.log(response.data);
 
+            if (formData.get('pm') === 'cash') {
+                window.location.replace('/manage-invoices.html')
+            } else {
+                window.location.replace(`http://localhost/cse-482-server/checkout_hosted.php?total_amount=${formData.get('total_price')}&invoice=${formData.get('id')}`);
+            }
             // do something with the response
         })
         .catch(function (error) {
