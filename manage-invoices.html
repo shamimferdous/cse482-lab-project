@@ -29,9 +29,13 @@
                 <div class="page_header">
                     <h1>Invoice Management</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Search invoices by ID">
+                        <input type="text" class="form-control" placeholder="Search invoices by ID" id="searchByID">
+                        <button id="searchBtn" onclick="return searchByID()" class="btn btn-warning"> <i
+                                class="fa fa-search"></i> Search</button>
                         <a href="/create-invoice.html">
-                            <button class="btn btn-success">Create New Invoice</button>
+                            <button class="btn btn-success">
+                                <i class="fa fa-plus"></i>
+                                Create New Invoice</button>
                         </a>
                     </div>
                 </div>
@@ -62,8 +66,63 @@
         integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+
+        let search = false;
+
         const invoiceTable = document.getElementById('invoice-table');
         console.log(invoiceTable)
+
+        const searchByID = () => {
+            if (!search) {
+                search = true;
+                document.getElementById('searchBtn').innerText = 'Clear'
+                document.getElementById('searchBtn').style.background = 'red'
+
+                console.log(document.getElementById('searchByID').value);
+                axios.get(`http://localhost/cse-482-server/api/get-invoice.php?id=${document.getElementById('searchByID').value}`).then(response => {
+                    console.log(response.data);
+                    let invoice = response.data;
+
+                    if (invoice.id) {
+
+                        invoiceTable.innerHTML = `
+                <tr>
+                    <th scope="row">${invoice.id}</th>
+            <td>${invoice.customer_name}</td>
+            <td>
+                <a href="tel:+88${invoice.customer_number}">${invoice.customer_number}</a>
+            </td>
+            <td>
+                <span class="badge bg-primary">৳ ${invoice.total_price}</span>
+            </td>
+            <td>
+                <span class="badge bg-danger">${invoice.pm}</span>
+            </td>
+            <td>
+                <a href='/invoice.html?id=${invoice.id}' target="_blank">
+                    <button class="btn">
+                    <i class="fa-solid fa-print"></i>
+                    </button>    
+                </a>
+            </td>
+                    </tr>
+                `
+                    } else {
+                        console.log('err')
+                        Toastify({
+                            text: 'Invalid Invoice ID',
+                            duration: 3000,
+                            position: 'center'
+                        }).showToast();
+                    }
+
+                })
+            } else {
+                window.location.reload();
+            }
+
+        }
+
         // make an AJAX request using Axios
         axios.get('http://localhost/cse-482-server/api/get-invoices.php')
             .then(function (response) {
@@ -82,7 +141,7 @@
                 <span class="badge bg-primary">৳ ${invoice.total_price}</span>
             </td>
             <td>
-                <span class="badge bg-danger">${invoice.pm}</span>
+                <span style="text-transform: uppercase;" class="badge ${invoice.pm === 'cash' ? 'bg-danger' : 'bg-success'}">${invoice.pm}</span>
             </td>
             <td>
                 <a href='/invoice.html?id=${invoice.id}' target="_blank">
@@ -103,6 +162,8 @@
 
 
     </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

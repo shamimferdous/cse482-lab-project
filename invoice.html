@@ -26,7 +26,7 @@
         <div class="invoice-info">
             <div>
                 <b>Date:</b>
-                <span>Some Date</span>
+                <span>9 May 2023</span>
             </div>
             <div>
                 <b>Invoice No:</b>
@@ -52,12 +52,16 @@
         </div>
 
         <div class="footer">
+            <span id="ssl"></span>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure esse cupiditate ex deserunt ut veritatis
                 magni quisquam est sequi animi ea dolore, nesciunt velit tempora veniam nobis atque at ab.</p>
             <em>**Thanks for shopping with us**</em>
             <b style="font-weight: 300;">Powered by Light Speed POS</b>
         </div>
     </div>
+    <a href="/create-invoice.html">
+        <button class="btn">Back To New Invoice</button>
+    </a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
         integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -67,6 +71,12 @@
         axios.get(`http://localhost/cse-482-server/api/get-invoice.php?id=${params.id}`).then(response => {
             const invoice = response.data;
 
+            if (invoice.pm === 'online') {
+                let ssl = document.getElementById('ssl');
+                ssl.innerText = `Paid via SSL Commerz Gateway. Tran ID - ${invoice.id}`;
+                ssl.style.color = 'red';
+                ssl.style.marginTop = '5px'
+            }
 
             //invoice id
             document.getElementById('invoice-id').innerText = invoice.id;

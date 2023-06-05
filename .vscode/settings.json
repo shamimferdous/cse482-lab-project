@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.https": {
+        "enable": true, //set it true to enable the feature.
+        "cert": "/Users/shamimferdous/Desktop/cse482/cse482-client/ssl_cer.crt", //full path of the certificate
+        "key": "/Users/shamimferdous/Desktop/cse482/cse482-client/private.key", //full path of the private key
+        "passphrase": "batman"
+    }
+}

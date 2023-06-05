@@ -187,6 +187,7 @@ const loginHandler = e => {
         .then(function (response) {
             // console.log(response.data);
             localStorage.setItem('token', response.data.token);
+            document.cookie = `token=${response.data.token}; path=/`;
             localStorage.setItem('user', JSON.stringify(response.data));
             window.location.replace('/manage-products.html')
             // do something with the response
@@ -200,5 +201,6 @@ const loginHandler = e => {
 
 const signOutHandler = () => {
     localStorage.removeItem('token');
+    document.cookie = `token=''; path=/`;
     window.location.reload();
 }

@@ -88,15 +88,15 @@
                                     <span class="badge rounded-pill bg-success">${user.role.toUpperCase()}</span>
                                 </td>
                                 <td>
-                                    <a href="#">
-                                        <i class="fa-solid fa-edit"></i>
-                                    </a>
                                         <div class="delete-button">
                                             <i class="fa-solid fa-trash" onclick="handleDeleteUser(${user.id})"></i>
                                         </div>
                                 </td>
                             </tr>
       `;
+                    //   <a href="#">
+                    //                                     <i class="fa-solid fa-edit"></i>
+                    //                                 </a>
                     // add the row to the tbody element
                     usersTable.appendChild(row);
                 });
